@@ -1,0 +1,26 @@
+// fig4a.hoc
+// creates a panel to create fig4a1, fig4a2, fig4a3
+
+load_file("nrngui.hoc")
+
+strdef tstr
+
+xpanel("Figures (in vitro) for Canavier and Landry 2006")
+xlabel("To reproduce figures 4a1, 4a2, or 4a3 select a button")
+xlabel("below and then press Init & Run")
+xradiobutton("4a1", "restart_(\"fig4a1\")")
+xradiobutton("4a2", "restart_(\"fig4a2\")")
+xradiobutton("4a3", "restart_(\"fig4a3\")")
+xbutton("Exit","quit()")
+xpanel(5,100)
+
+pwmcnt = PWManager[0].count // the initial gui should not be dismissed
+
+proc restart_() {local i
+	for (i= PWManager[0].count-1; i >= pwmcnt; i -= 1) {
+		PWManager[0].close(i)
+		doNotify()
+	}
+	sprint(tstr, "%s.hoc", $s1)
+	load_file(1, tstr)
+}

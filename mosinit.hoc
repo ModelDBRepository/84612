@@ -1,0 +1,44 @@
+// creates a panel to create fig4a1, fig4a2, fig4a3
+
+load_file("nrngui.hoc")
+
+strdef tstr
+
+xpanel("Figures (in vivo) for Canavier and Landry 2006")
+xlabel("To reproduce any of the below figures select a")
+xlabel("button and then press Init & Run")
+xradiobutton("4b1", "restart_(\"fig4b1\")")
+xradiobutton("4b2", "restart_(\"fig4b2\")")
+xradiobutton("4b3", "restart_(\"fig4b3\")")
+xradiobutton("5a", "restart_(\"fig5a\")")
+xradiobutton("5b", "restart_(\"fig5b\")")
+xradiobutton("9a1", "restart_(\"fig9a1\")")
+xradiobutton("9a2", "restart_(\"fig9a2\")")
+xradiobutton("9a3", "restart_(\"fig9a3\")")
+xradiobutton("9b1", "restart_(\"fig9b1\")")
+xradiobutton("9b2", "restart_(\"fig9b2\")")
+xradiobutton("9b3", "restart_(\"fig9b3\")")
+xradiobutton("10a", "restart_(\"fig10a\")")
+xradiobutton("10b", "restart_(\"fig10b\")")
+xradiobutton("10c", "restart_(\"fig10c\")")
+xradiobutton("11b1", "restart_(\"fig11b1\")")
+xradiobutton("11b2", "restart_(\"fig11b2\")")
+xbutton("Exit","quit()")
+xlabel("Note: to reproduce in vitro fig4a1,4a2,4a3 exit")
+xlabel("cd to and recompile the mod files in in_vitro folder")
+xlabel("and then startup fig4.hoc, e.g. in linux type:")
+xlabel("nrngui fig4a.hoc")
+xlabel("then select buttons for 4a1, 4a2, or 4a3.")
+
+xpanel(5,100)
+
+pwmcnt = PWManager[0].count // the initial gui should not be dismissed
+
+proc restart_() {local i
+	for (i= PWManager[0].count-1; i >= pwmcnt; i -= 1) {
+		PWManager[0].close(i)
+		doNotify()
+	}
+	sprint(tstr, "%s.hoc", $s1)
+	load_file(1, tstr)
+}
