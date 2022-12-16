@@ -105,3 +105,8 @@ Now that the in vitro model is running:
 Select a figure from the radio buttons.  Once the menu and graphics
 interface has appeared, click on the "Init and run" button to start
 the simulation.
+
+Changelog
+---------
+2022-12: ampasyn.mod: drop INDEPENDENT block for v
+         Required for upcoming NEURON 9.0.0
