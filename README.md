@@ -80,9 +80,8 @@ Select a figure from the radio buttons. Once the menu and graphics interface has
 ---
 
 Changelog
+
 2022-12: ampasyn.mod: drop INDEPENDENT block for v
 Required for upcoming NEURON 9.0.0
-
----
 
 2025-05-27 – Standardized to Markdown.
